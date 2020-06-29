@@ -466,7 +466,7 @@ public class JarCertVerifier implements CertVerifier {
     /**
      * Returns whether a file is in META-INF, and thus does not require signing.
      * <p>
-     * Signature-related files under META-INF include: . META-INF/MANIFEST.MF . META-INF/SIG-* . META-INF/*.SF . META-INF/*.DSA . META-INF/*.RSA
+     * Signature-related files under META-INF include: . META-INF/MANIFEST.MF . META-INF/SIG-* . META-INF/*.SF . META-INF/*.DSA . META-INF/*.RSA . META-INF/*.EC
      */
     static boolean isMetaInfFile(final String name) {
         if (name.endsWith("class")) {
@@ -477,6 +477,7 @@ public class JarCertVerifier implements CertVerifier {
                 name.endsWith(".SF") ||
                 name.endsWith(".DSA") ||
                 name.endsWith(".RSA") ||
+                name.endsWith(".EC") ||
                 SIG.matcher(name).matches()
         );
     }
