@@ -214,6 +214,7 @@ public class ManifestAttributesChecker {
         final boolean isFullySigned = signing == SigningState.FULL;
         final boolean isSandboxed = securityDelegate.getRunInSandbox();
         final boolean requestsCorrectPermissions = (isFullySigned && SecurityDesc.ALL_PERMISSIONS.equals(desc))
+                || (isFullySigned && SecurityDesc.J2EE_PERMISSIONS.equals(desc))
                 || (isSandboxed && SecurityDesc.SANDBOX_PERMISSIONS.equals(desc));
         final String signedMsg;
         if (isFullySigned && !isSandboxed) {
